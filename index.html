@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#c10e2b">
+  <meta name="description" content="Consulta electoral de Arroyos y Esteros. Lazarito Ovelar Intendente 2026, Lista 1 Honor Colorado.">
+  <title>Lazarito Ovelar 2026 | Consulta electoral</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="site-shell">
+    <div class="flag-stripe flag-red"></div>
+    <div class="flag-stripe flag-white"></div>
+    <div class="flag-stripe flag-blue"></div>
+
+    <section class="hero">
+      <header class="topbar">
+        <div class="list-badge"><span>LISTA</span><strong>1</strong></div>
+        <div class="party-copy"><span>HONOR COLORADO</span><small>Arroyos y Esteros</small></div>
+      </header>
+
+      <div class="hero-grid">
+        <div class="candidate-panel">
+          <div class="candidate-photo">
+            <img src="lazarito-ovelar.jpg" alt="Lazarito Ovelar, candidato a intendente de Arroyos y Esteros">
+          </div>
+          <p class="year">INTENDENTE 2026</p>
+          <h1>Lazarito<br><span>Ovelar</span></h1>
+          <p class="slogan">Arroyos y Esteros Avanza</p>
+        </div>
+
+        <div class="search-card">
+          <div class="card-heading">
+            <p>CONSULTA ELECTORAL</p>
+            <h2>¿Estás habilitado para votar?</h2>
+            <span>Ingresá tu número de cédula para consultar el padrón de Arroyos y Esteros.</span>
+          </div>
+
+          <form id="consulta-form">
+            <label for="cedula">Número de cédula</label>
+            <div class="input-row">
+              <input id="cedula" inputmode="numeric" autocomplete="off" placeholder="Ej.: 1234567" aria-describedby="ayuda">
+              <button id="consultar" type="submit">Consultar</button>
+            </div>
+            <small id="ayuda">Podés escribir la cédula con o sin puntos.</small>
+          </form>
+
+          <div id="message" aria-live="polite"></div>
+          <p class="privacy">Consulta informativa basada en el Registro Cívico Permanente con inscripciones hasta el 30/12/2025.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer><strong>LISTA 1 · HONOR COLORADO</strong><span>Arroyos y Esteros Avanza</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
