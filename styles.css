@@ -16,3 +16,68 @@ form{margin-top:30px}label{display:block;font-weight:800;margin-bottom:9px}.inpu
 dl{display:grid;gap:6px;margin:14px 0 0}dl div{display:grid;grid-template-columns:76px 1fr;gap:12px}dt{color:#6c7587;font-size:13px}dd{margin:0;font-size:13px;font-weight:800}.privacy{color:#7b8495;font-size:11px;line-height:1.5;margin:24px 0 0}
 footer{display:flex;justify-content:center;gap:24px;padding:20px;background:var(--navy);color:#fff;font-size:12px;letter-spacing:.08em}
 @media(max-width:780px){.site-shell{background:linear-gradient(165deg,var(--red) 0 39%,#f5f2ec 39.2% 100%)}.hero{padding-top:34px}.hero-grid{grid-template-columns:1fr;min-height:auto;gap:32px;padding-top:38px}.candidate-panel{text-align:center}.candidate-photo{width:150px;height:150px;margin:0 auto 18px}h1{font-size:57px}.slogan{font-size:18px}.search-card{padding:25px 20px;border-radius:22px}.input-row{flex-direction:column}button{min-height:54px}footer{flex-direction:column;text-align:center;gap:6px;margin-top:36px}}
+@media (max-width: 780px) {
+  .hero {
+    padding-top: 22px;
+  }
+
+  .topbar {
+    gap: 10px;
+  }
+
+  .list-badge {
+    width: 52px;
+    height: 52px;
+  }
+
+  .list-badge strong {
+    font-size: 32px;
+  }
+
+  .party-copy span {
+    font-size: 14px;
+  }
+
+  .party-copy small {
+    font-size: 12px;
+  }
+
+  .hero-grid {
+    padding-top: 16px;
+    gap: 16px;
+  }
+
+  .candidate-photo {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 10px;
+  }
+
+  .year {
+    margin-bottom: 5px;
+    font-size: 11px;
+  }
+
+  h1 {
+    font-size: 43px;
+    line-height: 0.82;
+  }
+
+  .slogan {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  .search-card {
+    padding: 20px;
+  }
+
+  .card-heading h2 {
+    font-size: 27px;
+    margin-bottom: 8px;
+  }
+
+  form {
+    margin-top: 18px;
+  }
+}
