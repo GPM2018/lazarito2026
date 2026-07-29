@@ -67,11 +67,17 @@ input.addEventListener("input", () => {
 window.addEventListener("beforeinstallprompt", event => {
   event.preventDefault();
   installPrompt = event;
-  installButton.hidden = false;
 });
 
 installButton.addEventListener("click", async () => {
-  if (!installPrompt) return;
+  if (!installPrompt) {
+    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    alert(isIos
+      ? "Para instalarla: tocá Compartir en Safari y elegí ‘Agregar a pantalla de inicio’."
+      : "Para instalarla, abrí el menú de tu navegador y elegí ‘Instalar aplicación’ o ‘Agregar a pantalla de inicio’."
+    );
+    return;
+  }
   installPrompt.prompt();
   await installPrompt.userChoice;
   installPrompt = null;

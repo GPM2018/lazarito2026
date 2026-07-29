@@ -2,55 +2,52 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#d9081a">
-  <meta name="description" content="Consulta electoral de Arroyos y Esteros. Lazarito Ovelar Intendente 2026, Lista 1 Honor Colorado.">
+  <meta name="description" content="Consulta electoral de Arroyos y Esteros. Lazarito Ovelar Intendente 2026, Lista 1.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="imagen-principal-lazarito.png">
-  <title>Lazarito Ovelar 2026 | Consulta electoral</title>
   <link rel="stylesheet" href="styles.css">
+  <title>Lazarito Ovelar 2026 | Consulta electoral</title>
 </head>
 <body>
-  <main class="site-shell">
-    <div class="flag-stripe flag-red"></div><div class="flag-stripe flag-white"></div><div class="flag-stripe flag-blue"></div>
-
-    <section class="hero">
-      <header class="topbar">
-        <div class="anr-mark" aria-label="Lista 1"><span>LISTA</span><strong>1</strong></div>
-        <div class="party-copy"><span>HONOR COLORADO</span><small>ARROYOS Y ESTEROS AVANZA</small></div>
-      </header>
-
-      <div class="hero-grid">
-        <div class="candidate-panel">
-          <p class="eyebrow">CANDIDATO A INTENDENTE</p>
-          <h1>Lazarito<br><span>Ovelar</span></h1>
-          <p class="campaign">ARROYOS Y ESTEROS<br>AVANZA</p>
-          <div class="candidate-image-wrap"><img src="imagen-principal-lazarito.png" alt="Lazarito Ovelar, candidato a intendente de Arroyos y Esteros"></div>
-        </div>
-
-        <div class="search-card" id="consulta">
-          <div class="card-heading">
-            <p>CONSULTA ELECTORAL 2026</p>
-            <h2>¿Querés conocer tu local de votación?</h2>
-            <span>Ingresá tu número de cédula para consultar el padrón de Arroyos y Esteros.</span>
-          </div>
-          <form id="consulta-form">
-            <label for="cedula">Número de cédula</label>
-            <div class="input-row"><input id="cedula" inputmode="numeric" autocomplete="off" placeholder="Ej.: 1234567" aria-describedby="ayuda"><button id="consultar" type="submit">Consultar</button></div>
-            <small id="ayuda">Podés escribir la cédula con o sin puntos.</small>
-          </form>
-          <div id="message" aria-live="polite"></div>
-          <p class="privacy">Consulta informativa basada en el Registro Cívico Permanente con inscripciones hasta el 30/12/2025.</p>
-        </div>
+  <main class="page">
+    <section class="campaign-card" aria-label="Lazarito Ovelar, candidato a intendente">
+      <img class="campaign-image" src="imagen-principal-lazarito.png" alt="Lazarito Ovelar, candidato a intendente de Arroyos y Esteros por Lista 1">
+      <div class="campaign-caption">
+        <strong>ARROYOS Y ESTEROS AVANZA</strong>
+        <span>LISTA 1 · HONOR COLORADO</span>
       </div>
     </section>
 
-    <footer><strong>LISTA 1 · HONOR COLORADO</strong><span>Arroyos y Esteros Avanza</span><small>Desarrollado por <b>GPMINGENIERIA</b></small></footer>
+    <section class="consultation-card" id="consulta">
+      <div class="card-heading">
+        <p>CONSULTA ELECTORAL 2026</p>
+        <h1>¿Querés conocer tu local de votación?</h1>
+        <span>Ingresá tu número de cédula para consultar el padrón de Arroyos y Esteros.</span>
+      </div>
+      <form id="consulta-form">
+        <label for="cedula">Número de cédula</label>
+        <div class="input-row">
+          <input id="cedula" inputmode="numeric" autocomplete="off" placeholder="Ej.: 1234567" aria-describedby="ayuda">
+          <button id="consultar" type="submit">Consultar</button>
+        </div>
+        <small id="ayuda">Podés escribir la cédula con o sin puntos.</small>
+      </form>
+      <div id="message" aria-live="polite"></div>
+      <p class="privacy">Consulta informativa basada en el Registro Cívico Permanente con inscripciones hasta el 30/12/2025.</p>
+    </section>
+
+    <footer>Desarrollado por <strong>GPMINGENIERIA</strong></footer>
   </main>
 
   <div class="floating-actions" aria-label="Acciones rápidas">
-    <button class="floating-button install-button" id="install-app" type="button" hidden aria-label="Instalar aplicación"><span class="install-icon">↓</span><span>Instalar app</span></button>
-    <button class="floating-button whatsapp-button" id="share-whatsapp" type="button" aria-label="Compartir por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27.3 4.7A15.5 15.5 0 0 0 3.8 25.1L2 30l5-1.7A15.5 15.5 0 1 0 27.3 4.7ZM16 28.3a12.2 12.2 0 0 1-6.2-1.7l-.4-.2-3 .9 1-2.9-.2-.4A12.2 12.2 0 1 1 16 28.3Zm6.7-9.1c-.4-.2-2.5-1.2-2.9-1.3-.4-.2-.7-.2-1 .2s-1.1 1.3-1.3 1.5c-.2.3-.5.3-.9.1a9.9 9.9 0 0 1-2.9-1.8 10.8 10.8 0 0 1-2-2.5c-.2-.4 0-.6.1-.8l.7-.8c.2-.2.2-.4.3-.7.1-.2 0-.5-.1-.7l-1.3-3c-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.4 0 2 1.5 3.9 1.7 4.2.2.3 2.9 4.4 7 6.2 1 .4 1.8.7 2.4.9 1 .3 2 .3 2.7.2.8-.1 2.5-1 2.8-2 .4-1 .4-1.9.3-2.1-.1-.1-.4-.2-.8-.4Z"/></svg><span>WhatsApp</span></button>
+    <button class="floating-button install-button" id="install-app" type="button" aria-label="Instalar aplicación">
+      <span class="install-icon" aria-hidden="true">↓</span><span>Instalar app</span>
+    </button>
+    <button class="floating-button whatsapp-button" id="share-whatsapp" type="button" aria-label="Compartir esta página por WhatsApp">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27.3 4.7A15.5 15.5 0 0 0 3.8 25.1L2 30l5-1.7A15.5 15.5 0 1 0 27.3 4.7ZM16 28.3a12.2 12.2 0 0 1-6.2-1.7l-.4-.2-3 .9 1-2.9-.2-.4A12.2 12.2 0 1 1 16 28.3Zm6.7-9.1c-.4-.2-2.5-1.2-2.9-1.3-.4-.2-.7-.2-1 .2s-1.1 1.3-1.3 1.5c-.2.3-.5.3-.9.1a9.9 9.9 0 0 1-2.9-1.8 10.8 10.8 0 0 1-2-2.5c-.2-.4 0-.6.1-.8l.7-.8c.2-.2.2-.4.3-.7.1-.2 0-.5-.1-.7l-1.3-3c-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.4 0 2 1.5 3.9 1.7 4.2.2.3 2.9 4.4 7 6.2 1 .4 1.8.7 2.4.9 1 .3 2 .3 2.7.2.8-.1 2.5-1 2.8-2 .4-1 .4-1.9.3-2.1-.1-.1-.4-.2-.8-.4Z"/></svg><span>WhatsApp</span>
+    </button>
   </div>
   <script src="app.js"></script>
 </body>
