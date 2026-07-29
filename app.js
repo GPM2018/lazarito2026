@@ -3,6 +3,9 @@ const form = document.querySelector("#consulta-form");
 const input = document.querySelector("#cedula");
 const button = document.querySelector("#consultar");
 const message = document.querySelector("#message");
+const installButton = document.querySelector("#install-app");
+const shareWhatsapp = document.querySelector("#share-whatsapp");
+let installPrompt = null;
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, char => ({
@@ -60,3 +63,31 @@ form.addEventListener("submit", async event => {
 input.addEventListener("input", () => {
   input.value = input.value.replace(/[^\d.]/g, "");
 });
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  installPrompt = event;
+  installButton.hidden = false;
+});
+
+installButton.addEventListener("click", async () => {
+  if (!installPrompt) return;
+  installPrompt.prompt();
+  await installPrompt.userChoice;
+  installPrompt = null;
+  installButton.hidden = true;
+});
+
+window.addEventListener("appinstalled", () => {
+  installButton.hidden = true;
+});
+
+shareWhatsapp.addEventListener("click", () => {
+  const text = "Consultá tu local de votación de Arroyos y Esteros en la página de Lazarito Ovelar 2026:";
+  const url = `${window.location.origin}${window.location.pathname}`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, "_blank", "noopener");
+});
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js"));
+}

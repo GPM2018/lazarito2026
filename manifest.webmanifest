@@ -1,0 +1,9 @@
+{
+  "name": "Lazarito Ovelar 2026",
+  "short_name": "Lazarito 2026",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#d9081a",
+  "theme_color": "#d9081a",
+  "icons": [{"src": "imagen-principal-lazarito.png", "sizes": "640x640", "type": "image/png", "purpose": "any maskable"}]
+}
