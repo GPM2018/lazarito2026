@@ -7,6 +7,7 @@ const installButton = document.querySelector("#install-app");
 const shareWhatsapp = document.querySelector("#share-whatsapp");
 let installPrompt = null;
 let lastConsultation = null;
+let reportFile = null;
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, char => ({
@@ -40,14 +41,23 @@ form.addEventListener("submit", async event => {
     const result = records.get(cedula);
     if (result) {
       lastConsultation = result;
+      reportFile = null;
       message.innerHTML = `<div class="result found">
         <div class="status-icon">✓</div>
         <div><p>HABILITADO/A PARA VOTAR</p><h3>${escapeHtml(result.name)}</h3>
         <dl><div><dt>Cédula</dt><dd>${escapeHtml(result.cedula)}</dd></div>
         <div><dt>Local</dt><dd>${escapeHtml(result.local)}</dd></div></dl></div>
       </div>`;
+      // Se prepara antes de pulsar WhatsApp para que el navegador permita
+      // compartir el archivo como imagen, no como enlace de texto.
+      createReportImage(result)
+        .then(blob => {
+          if (blob) reportFile = new File([blob], `consulta-${result.cedula}.png`, { type: "image/png" });
+        })
+        .catch(() => { reportFile = null; });
     } else {
       lastConsultation = null;
+      reportFile = null;
       message.innerHTML = `<div class="result not-found">
         <div class="status-icon">!</div>
         <div><p>RESULTADO DE LA CONSULTA</p>
@@ -180,7 +190,17 @@ async function createReportImage(record) {
     y += Math.max(90, lines.length * 38 + 57);
   });
 
-  return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+  return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("No se pudo crear la imagen")), "image/png"));
+}
+
+function downloadReport(file) {
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(file);
+  link.download = file.name;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 }
 
 shareWhatsapp.addEventListener("click", async () => {
@@ -190,18 +210,17 @@ shareWhatsapp.addEventListener("click", async () => {
   }
 
   try {
-    const report = await createReportImage(lastConsultation);
-    const file = new File([report], `consulta-${lastConsultation.cedula}.png`, { type: "image/png" });
-    const title = "Consulta de local de votación";
-    const shareData = { title, text: "Reporte de consulta de local de votación.", files: [file] };
+    const file = reportFile || new File([await createReportImage(lastConsultation)], `consulta-${lastConsultation.cedula}.png`, { type: "image/png" });
+    const shareData = { files: [file] };
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share(shareData);
       return;
     }
 
-    const url = `${window.location.origin}${window.location.pathname}`;
-    const text = `CONSULTA DE LOCAL DE VOTACIÓN\n\nRegistro habilitado para votar\n\nCédula de identidad: ${lastConsultation.cedula}\nNombre y apellido: ${lastConsultation.name}\nLocal de votación: ${lastConsultation.local}\n\n${url}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    // WhatsApp no acepta que una web adjunte archivos mediante un enlace.
+    // En navegadores sin Web Share se descarga la imagen, nunca se envía un texto.
+    downloadReport(file);
+    alert("El reporte se descargó como imagen. Abrí WhatsApp, tocá el clip y elegí la imagen descargada para enviarla.");
   } catch {
     alert("No se pudo preparar el reporte. Intentá nuevamente.");
   }
