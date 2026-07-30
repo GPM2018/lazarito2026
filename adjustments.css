@@ -7,8 +7,8 @@
 
 /* La fotografía llena completamente el primer cuadro. */
 .campaign-image {
-  height: min(66vh, 560px);
-  min-height: 410px;
+  height: min(54vh, 500px);
+  min-height: 320px;
   object-fit: cover;
   object-position: center top;
 }
@@ -31,9 +31,83 @@
   box-shadow: 0 5px 18px rgba(217, 8, 26, .14);
 }
 
+/* En celular los accesos flotantes quedan sobre la imagen y no sobre la consulta. */
+@media (max-width: 699px) {
+  .page {
+    padding-top: 9px;
+    padding-bottom: 28px;
+  }
+
+  .campaign-image {
+    height: min(47vh, 430px);
+    min-height: 292px;
+    object-position: center top;
+  }
+
+  .developer-credit {
+    margin: 8px 0;
+  }
+
+  .consultation-card {
+    padding: 15px;
+  }
+
+  .card-heading h1 {
+    font-size: 22px;
+  }
+
+  .card-heading > span {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+
+  form {
+    margin-top: 12px;
+  }
+
+  .input-row {
+    gap: 7px;
+  }
+
+  #consultar {
+    padding: 0 12px;
+  }
+
+  .floating-actions {
+    left: 12px;
+    right: auto;
+    top: 45%;
+    bottom: auto;
+    gap: 8px;
+  }
+
+  .floating-button {
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    padding: 0;
+    border: 2px solid #fff;
+  }
+
+  .floating-button span:last-child {
+    display: none;
+  }
+
+  .floating-button svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .install-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 21px;
+  }
+}
+
 @media (max-width: 390px) {
   .developer-credit { margin: 9px 0; }
   .consultation-card { border-width: 3px; }
   .campaign-card { padding: 0; }
-  .campaign-image { height: 62vh; min-height: 390px; }
+  .campaign-image { height: 43vh; min-height: 275px; }
 }
