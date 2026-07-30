@@ -1,6 +1,16 @@
 /* Ajustes visuales solicitados */
 .campaign-card {
   margin-bottom: 0;
+  border: 3px solid #d9081a;
+  padding: 0;
+}
+
+/* La fotografía llena completamente el primer cuadro. */
+.campaign-image {
+  height: min(66vh, 560px);
+  min-height: 410px;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .developer-credit {
@@ -24,4 +34,6 @@
 @media (max-width: 390px) {
   .developer-credit { margin: 9px 0; }
   .consultation-card { border-width: 3px; }
+  .campaign-card { padding: 0; }
+  .campaign-image { height: 62vh; min-height: 390px; }
 }
